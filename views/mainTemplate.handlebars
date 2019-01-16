@@ -1,0 +1,21 @@
+<h1>STOP packaging food in plastic</h1>
+<h2>join our petition for less use of Plastic in food packaging</h2>
+<p>Plastic products are very common in our modern life. According to estimates, every year we use approximately 1.6 million barrels of oil just for producing plastic water bottles. Plastic waste is one of many types of wastes that take too long to decompose. Normally, plastic items can take up to 1000 years to decompose in landfills. But plastic bags we use in our everyday life take 10-1000 years to decompose, while plastic bottles can take 450 years or more.
+</p>
+
+{{#if error}}
+    <div class="error">Oops, something went wrong! Please try again. Make sure you filled in your first and last name and then sign in the box below.</div>
+{{/if}}
+
+<form method="post">
+
+    <input name="sig" id="sig-field" type="hidden" value="">
+    <br>
+    <canvas id="canvas" width="340" height="70"></canvas>
+    <br>
+    <button class="signButton">sign here</button>
+
+    <input name="_csrf" type="hidden" value="{{csrfToken}}">
+</form>
+
+<a href="/logout" class="logOut">Log out</a>

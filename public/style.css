@@ -1,0 +1,36 @@
+*{
+    /* display: flex; */
+    background-color: skyblue;
+    text-align: center;
+}
+body{
+    font-size: 20px;
+    font-family: 'Muli', sans-serif;
+    margin: 0;
+}
+#canvas{
+    background-color: white;
+    border: 5px solid gray;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+button{
+    width: 350px;
+    height:30px;
+    background-color: white;
+    height: 40px;
+}
+.error{
+    font-size: 14px;
+    color: red;
+}
+input{
+    height: 30px;
+    width: 165px;
+    background-color: white;
+    margin-top: 50px;
+
+}
+#logout{
+    margin-top: 70vh;
+}

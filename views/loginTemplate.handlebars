@@ -1,0 +1,16 @@
+<h1>Welcome to the petition site</h1>
+<p>to read about the petition, you need to be loged in.</p>
+
+<form method="post">
+    <p>please log in here</p>
+    {{#if error}}
+        <div class="error">Please type your email and password!</div>
+    {{/if}}
+
+    <input name="email" placeholder="Email address">
+    <input name="password" placeholder="Pass word">
+    <input name="_csrf" type="hidden" value="{{csrfToken}}">
+    <button>Sign in</button>
+</form>
+
+<p>Not registered. <a href="./register">Register now</a></p>
