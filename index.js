@@ -220,15 +220,6 @@ app.get("/thankyou", requireSignature, (req, res) => {
     }
 });
 
-// db.signPetition(signature).the (function (id) {
-//     req.session.first = "farouq";
-//     req.session.signatureId = 1; // (we need to get the id that insurt query generates and put that in a cookie insted of 1)
-//     console.log("req session : ", req.session);
-//
-// // how to get the id from the resaults and put in the coookie??!!
-//
-//     res.redirect('/thanks')
-// })
 
 app.get("/signers" ,(req, res) => {
     db.getSigners().then(function(signers) {
@@ -245,7 +236,6 @@ app.get("/logout", (req, res) => {
     req.session = null;
     res.redirect("/login");
 });
-
 
 // app.get("/signers/:city")
 //     const city = req.params.city;
