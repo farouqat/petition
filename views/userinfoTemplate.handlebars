@@ -1,0 +1,14 @@
+<h1>Here you could add more infos about yourself!</h1>
+
+<form method="post">
+    {{#if error}}
+        <div class="error">Uh Oh, Seems like something went wrong. Please try again!</div>
+    {{/if}}
+
+
+    <input name="age" placeholder="Age">
+    <input name="city" placeholder="City">
+    <input name="website" placeholder="Website">
+    <input name="_csrf" type="hidden" value="{{csrfToken}}">
+    <button> Next </button>
+</form>

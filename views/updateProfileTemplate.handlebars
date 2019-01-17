@@ -1,0 +1,26 @@
+<h1>Here you could update your profile!</h1>
+
+<form method="post">
+
+
+    {{#if error}}
+        <div class="error">Uh Oh, Seems like something went wrong. Please try again!</div>
+    {{/if}}
+
+    <input name="first" placeholder="First name" value="{{userinfo.first}}">
+
+    <input name="last" placeholder="Last name" value="{{userinfo.last}}">
+
+    <input name="email" placeholder="Email address" value="{{userinfo.email}}">
+
+    <input name="password" placeholder="Pass word">
+
+    <input name="age" placeholder="Age" value="{{userinfo.age}}">
+
+    <input name="city" placeholder="City" value="{{userinfo.city}}">
+
+    <input name="website" placeholder="Website" value="{{userinfo.website}}">
+
+    <input name="_csrf" type="hidden" value="{{csrfToken}}">
+    <button> Next </button>
+</form>
