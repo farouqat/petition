@@ -20,7 +20,6 @@ const requireLoggedOutUser = (req, res, next) => {
 const requireSignature = (req, res, next) => {
     if (!req.session.sigid){
         console.log('2');
-
         return res.redirect('/petition');
     } else {
         next();
@@ -28,7 +27,7 @@ const requireSignature = (req, res, next) => {
 };
 const requireNoSignature = (req, res, next) => {
     if (req.session.sigid){
-        console.log('3');
+        console.log('sigid');
         return res.redirect('/thankyou');
     } else {
         next();
@@ -86,7 +85,6 @@ app.get('/register', function(req, res) {
 });
 
 app.post("/register", function(req, res) {
-
     if (
         !req.body.first ||
         !req.body.last  ||
@@ -154,6 +152,7 @@ app.post('/login', requireLoggedOutUser, (req, res) => {
                                 id: data.id,
                                 sigid: data.sigid
                             };
+                            console.log(req.session);
                             res.redirect('/petition');
                         } else {
                             res.render('login', {
@@ -163,8 +162,7 @@ app.post('/login', requireLoggedOutUser, (req, res) => {
                         }
                     });
             } else {
-                res.render('login', {
-
+                res.render('loginTemplate', {
                     layout: 'main',
                     error: 'Sorry, your email was incorrect. Please double-check your email.'
                 });
@@ -173,7 +171,7 @@ app.post('/login', requireLoggedOutUser, (req, res) => {
     }
 });
 
-app.get("/petition", (req, res) => {
+app.get("/petition", requireNoSignature,(req, res) => {
     console.log('here');
     res.render("mainTemplate", {
         layout: "main"
@@ -205,7 +203,6 @@ app.get("/thankyou", requireSignature, (req, res) => {
 });
 
 app.get("/thankyou", requireSignature, (req, res) => {
-    //console.log("sig id in object :", req.session.signatureId.rows[0].id);
     if (req.session.sigid) {
         db.getSignature(req.session.signatureId.rows[0].id)
             .then(function(sig) {
@@ -233,15 +230,9 @@ app.get("/thankyou", requireSignature, (req, res) => {
 //     res.redirect('/thanks')
 // })
 
-app.get("/signers", requireSignature ,(req, res) => {
-    res.render("signersTemplate", {
-        layout: "main"
-    });
-});
-
-app.post("/signers", requireSignature ,(req, res) => {
+app.get("/signers" ,(req, res) => {
     db.getSigners().then(function(signers) {
-        console.log("signers.rows: ", signers.rows);
+        console.log(signers);
         res.render("signersTemplate", {
             signers: signers.rows,
             layout: "main"
@@ -249,37 +240,16 @@ app.post("/signers", requireSignature ,(req, res) => {
     });
 });
 
+
 app.get("/logout", (req, res) => {
     req.session = null;
     res.redirect("/login");
 });
 
-// app.get("/thankyou", requireSignature, (req, res) => {
-//     //console.log("sig id in object :", req.session.signatureId.rows[0].id);
-//     if (req.session.signatureId) {
-//         db.getSignature(req.session.signatureId.rows[0].id)
-//             .then(function(sig) {
-//                 console.log("then: ", sig);
-//                 res.render("thankyouTemplate", {
-//                     signature: sig.rows[0].sig,
-//                     layout: "main"
-//                 });
-//             })
-//             .catch(function(err) {
-//                 console.log(err);
-//             });
-//     } else {
-//         res.redirect("/petition");
-//     }
-// });
 
 
-// app.send('login',requireLoggedOutUser, (req, res) => {
-// // if the pass word match
-// // find if signed get sig id by user id
-// // then redirekt to sign
-// });
-// arr.get("/signers/:city")
+
+// app.get("/signers/:city")
 //     const city = req.params.city;
 
 // req.session.userid = id;

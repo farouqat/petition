@@ -1,16 +1,16 @@
 <p>All of these people supported our cause!</p>
-{{# signers}}
 
-    {{if url}}
+{{#signers}}
+    {{#if url}}
         <a href="{{url}}">{{first}} {{last}}</a>
     {{else}}
     <ul>
         <li>{{first}} {{last}}</li>
     </ul>
-    {{/if}} {{age}} {{#city}} <a href="{{city}}">{{.}}</a>{{/city}}
+    {{/if}} {{age}} {{#city}} <a href="{{.}}">{{.}}</a> {{/city}}
 {{/signers}}
 
 
 
-the post for the signatue table just need sig and user_id
-sig in users sig . user id = user id
+<!-- the post for the signatue table just need sig and user_id
+sig in users sig . user id = user id -->

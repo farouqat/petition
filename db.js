@@ -17,10 +17,10 @@ module.exports.getUserInfoByEmail = function(email){
         WHERE email = $1`, [email]
     );
 };
-module.exports.getSigners = function(sig) {
+module.exports.getSigners = function() {
     return db.query(
-        `SELECT first, last, sig
-        FROM signatures`
+        `SELECT first, last
+        FROM users`
     );
 };
 
