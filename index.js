@@ -247,8 +247,6 @@ app.get("/logout", (req, res) => {
 });
 
 
-
-
 // app.get("/signers/:city")
 //     const city = req.params.city;
 
